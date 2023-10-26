@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="I12_Belinskiy_WEBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Person">
+    <Key>
+      <PropertyRef Name="IdPerson" />
+    </Key>
+    <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Patronymic" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Age" Type="Int32" Nullable="false" />
+    <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="HasJob" Type="Boolean" Nullable="false" />
+    <Property Name="IdPerson" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Answer2" Relationship="I12_Belinskiy_WEBModel.FK_Answer_Person2" FromRole="Person" ToRole="Answer" />
+  </EntityType>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="Number" />
+    </Key>
+    <Property Name="Number" Type="Int32" Nullable="false" />
+    <Property Name="QuestionText" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Answer" Relationship="I12_Belinskiy_WEBModel.FK_Answer_Question" FromRole="Question" ToRole="Answer" />
+  </EntityType>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Person" EntityType="Self.Person" />
+    <EntitySet Name="Question" EntityType="Self.Question" />
+    <EntitySet Name="Answer" EntityType="I12_Belinskiy_WEBModel.Answer" />
+    <AssociationSet Name="FK_Answer_Question" Association="I12_Belinskiy_WEBModel.FK_Answer_Question">
+      <End Role="Question" EntitySet="Question" />
+      <End Role="Answer" EntitySet="Answer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Answer_Person2" Association="I12_Belinskiy_WEBModel.FK_Answer_Person2">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Answer" EntitySet="Answer" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Answer">
+    <Key>
+      <PropertyRef Name="QuestionNumber" />
+      <PropertyRef Name="PersonId" />
+    </Key>
+    <Property Name="QuestionNumber" Type="Int32" Nullable="false" />
+    <Property Name="PersonId" Type="Guid" Nullable="false" />
+    <Property Name="AnswerTime" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="AnswerText" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Question" Relationship="I12_Belinskiy_WEBModel.FK_Answer_Question" FromRole="Answer" ToRole="Question" />
+    <NavigationProperty Name="Person2" Relationship="I12_Belinskiy_WEBModel.FK_Answer_Person2" FromRole="Answer" ToRole="Person" />
+  </EntityType>
+  <Association Name="FK_Answer_Question">
+    <End Type="I12_Belinskiy_WEBModel.Question" Role="Question" Multiplicity="1" />
+    <End Type="I12_Belinskiy_WEBModel.Answer" Role="Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="Number" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="QuestionNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Answer_Person2">
+    <End Type="I12_Belinskiy_WEBModel.Person" Role="Person" Multiplicity="1" />
+    <End Type="I12_Belinskiy_WEBModel.Answer" Role="Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="IdPerson" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="PersonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

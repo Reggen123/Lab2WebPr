@@ -1,0 +1,27 @@
+﻿@model List<Lab2WebPr.Models.Entities.Person>
+@{
+    ViewBag.Title = "ListOfPeople";
+}
+
+<h2>Список участников</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th class="text-center">Наименование</th>
+            <th class="text-center">Возраст</th>
+            <th class="text-center">#</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var person in Model)
+            {
+                <tr class="text-center">
+                    <td>@person.LastName @person.FirstName @person.Patronymic</td>
+                    <td>@person.Age</td>
+                    <td>@Html.ActionLink("Подробнее", "PersonDetail", "Lab2", new { personId = person.IdPerson}, null)</td>
+                </tr>
+            }
+    </tbody>
+</table>
+
