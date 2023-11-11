@@ -1,0 +1,26 @@
+﻿@model Lab2WebPr.Models.Entities.Person
+<div class="row">
+    <div class="col-md-5">
+        @Model.LastName @Model.FirstName @Model.Patronymic
+        (@Html.Action("QuestionAnswered", new { personId = Model.IdPerson }))
+    </div>
+    <div class="col-md-1">@Model.Age</div>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div class="col-md-2">
+            @Html.ActionLink("подробнее", "PersonDetail", "Lab2",
+            new { personId = Model.IdPerson }, null)
+        </div>
+        if (User.IsInRole("Admin"))
+        {
+            <div class="col-md-2">
+                @Html.ActionLink("редактировать", "EditPerson", "Lab2",
+                new { personId = Model.IdPerson }, null)
+            </div>
+            <div class="col-md-2">
+                @Html.ActionLink("удалить", "DeletePerson", "Lab2",
+                new { personId = Model.IdPerson }, null)
+            </div>
+        }
+    }
+</div>

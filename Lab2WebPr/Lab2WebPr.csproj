@@ -136,30 +136,37 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Entities\Answer.cs">
-      <DependentUpon>ModelTest.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Entities\ModelTest.Context.cs">
+    <Compile Include="Models\Entities\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelTest.Context.tt</DependentUpon>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Entities\ModelTest.cs">
+    <Compile Include="Models\Entities\Model1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelTest.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Entities\ModelTest.Designer.cs">
+    <Compile Include="Models\Entities\Model1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelTest.edmx</DependentUpon>
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Entities\Person.cs">
-      <DependentUpon>ModelTest.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entities\Question.cs">
-      <DependentUpon>ModelTest.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Role.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\User.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ViewModels\PersonVM.cs" />
+    <Compile Include="Models\ViewModels\UserVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -182,15 +189,15 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\Entities\ModelTest.Context.tt">
+    <Content Include="Models\Entities\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ModelTest.Context.cs</LastGenOutput>
-      <DependentUpon>ModelTest.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
-    <Content Include="Models\Entities\ModelTest.tt">
+    <Content Include="Models\Entities\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelTest.edmx</DependentUpon>
-      <LastGenOutput>ModelTest.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -198,12 +205,12 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\Entities\ModelTest.edmx">
+    <EntityDeploy Include="Models\Entities\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelTest.Designer.cs</LastGenOutput>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Entities\ModelTest.edmx.diagram">
-      <DependentUpon>ModelTest.edmx</DependentUpon>
+    <Content Include="Models\Entities\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -234,6 +241,11 @@
     <Content Include="Views\Lab2\PersonDetail.cshtml" />
     <Content Include="Views\Lab3\CreatePerson.cshtml" />
     <Content Include="Views\Lab2\CreatePerson.cshtml" />
+    <Content Include="Views\Lab2\EditPerson.cshtml" />
+    <Content Include="Views\Lab2\DeletePerson.cshtml" />
+    <Content Include="Views\Lab2\PersonOverView.cshtml" />
+    <Content Include="Views\Lab2\QuestionAnswered.cshtml" />
+    <Content Include="Views\Lab2\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

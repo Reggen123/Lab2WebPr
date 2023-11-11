@@ -1,27 +1,26 @@
 ﻿@model Lab2WebPr.Models.ViewModels.PersonVM
 
 @{
-    ViewBag.Title = "CreatePerson";
+    ViewBag.Title = "EditPerson";
 }
 
-<h2>CreatePerson</h2>
+<h2>EditPerson</h2>
 
-
-@using (Html.BeginForm("CreatePerson", "Lab2", FormMethod.Post))
+@using (Html.BeginForm("EditPerson", "Lab2", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary(false, "Поля Фамилия, имя, возраст и трудоустроства обязательны к заполнению", new { @class = "text-danger"})
-
 
 <div class="form-horizontal">
     <h4>Person</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+
     <div class="form-group">
-        @Html.LabelFor(model => model.LastName, "Фамилия", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.LastName, "Фамилия от 2 до 100 символов", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -29,7 +28,7 @@
         @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.FirstName, "Необходимо имя", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -45,17 +44,14 @@
         @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Age, "Возраст от 18 до 100", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(model => model.Gender,
-                                    ViewBag.Genders as SelectList,
-                                    "---",
-                                    new { @class = "form-control" })
+            @Html.EditorFor(model => model.Gender, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -80,10 +76,47 @@
             </div>
         </div>
     </div>
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Birthday, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.TextBoxFor(model => model.Birthday, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+                @Html.ValidationMessageFor(model => model.Birthday, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.IstertDateTime, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.TextBoxFor(model => model.IstertDateTime, "{0:yyyy-MM-dd HH:mm:ss}", new { @class = "form-control", type = "datetime-local" })
+                @Html.ValidationMessageFor(model => model.IstertDateTime, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.WakeUpTime, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.TextBoxFor(model => model.WakeUpTime, "{0:HH:mm:ss}", new { @class = "form-control", type = "time" })
+                @Html.ValidationMessageFor(model => model.WakeUpTime, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
 </div>
-    <input type="submit" value="Добавить участиника"/>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "ListOfPeople")
+    @Html.ActionLink("Back to List", "Index")
 </div>

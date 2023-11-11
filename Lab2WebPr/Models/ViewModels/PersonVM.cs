@@ -10,7 +10,8 @@ namespace Lab2WebPr.Models.ViewModels
 {
     public class PersonVM
     {
-        public System.Guid IdPerson { get; set; }
+        public System.Guid Id { get; set; }
+
 
         [Required]
         [DisplayName("Фамилия")]
@@ -26,14 +27,32 @@ namespace Lab2WebPr.Models.ViewModels
 
         [Required]
         [Range(18, 100)]
-        [DisplayName("Имя")]
+        [DisplayName("Возраст")]
         public int Age { get; set; }
 
-        [DisplayName("Отчество")]
+        [DisplayName("Пол")]
         public string Gender { get; set; }
 
         [Required]
         [DisplayName("Трудоустроен")]
         public bool HasJob { get; set; }
+
+        [Required]
+        [DisplayName("ID Пользователя")]
+        public System.Guid UserID { get; set; }
+
+        [DisplayName("Дата рождения")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime Birthday { get; set; }
+
+        [DisplayName("Дата добавления")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-ddThh:mm}", ApplyFormatInEditMode = true)]
+
+        public DateTime IstertDateTime { get; set; }
+
+        [DisplayName("Время подъёма")]
+        [DisplayFormat(DataFormatString = "{0:HH:mm:ss}", ApplyFormatInEditMode = true)]
+
+        public DateTime WakeUpTime { get; set; }
     }
 }

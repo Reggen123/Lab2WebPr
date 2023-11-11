@@ -4,24 +4,23 @@
 }
 
 <h2>Список участников</h2>
+<div class="row">
+    <div class="col-md-5"><strong>Наименование</strong></div>
+    <div class="col-md-1"><strong>Возраст</strong></div>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div class="col-md-2"><strong>#</strong></div>
+        if (User.IsInRole("Admin"))
+        {
+            <div class="col-md-2"><strong>#</strong></div>
+            <div class="col-md-2"><strong>#</strong></div>
+        }
+    }
+</div>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th class="text-center">Наименование</th>
-            <th class="text-center">Возраст</th>
-            <th class="text-center">#</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var person in Model)
-            {
-                <tr class="text-center">
-                    <td>@person.LastName @person.FirstName @person.Patronymic</td>
-                    <td>@person.Age</td>
-                    <td>@Html.ActionLink("Подробнее", "PersonDetail", "Lab2", new { personId = person.IdPerson}, null)</td>
-                </tr>
-            }
-    </tbody>
-</table>
+@foreach (var person in Model)
+{
+    @Html.Partial("PersonOverView", person);
+}
+
 

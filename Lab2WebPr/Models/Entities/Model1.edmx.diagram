@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="491426923ed347be8094d1dc808529ab" Name="Diagram1">
+        <EntityTypeShape EntityType="WebProgModel.Answer" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebProgModel.Person" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebProgModel.Question" Width="1.5" PointX="5.625" PointY="1.375" IsExpanded="true" />
+        <AssociationConnector Association="WebProgModel.FK_Answer_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="WebProgModel.FK_Answer_Question" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="WebProgModel.Role" Width="1.5" PointX="3.25" PointY="4.375" />
+        <EntityTypeShape EntityType="WebProgModel.User" Width="1.5" PointX="0.875" PointY="4.625" />
+        <AssociationConnector Association="WebProgModel.FK_Person_User" />
+        <AssociationConnector Association="WebProgModel.FK_User_Role" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

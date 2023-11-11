@@ -21,6 +21,22 @@
                     <li>@Html.ActionLink("Домашняя страница", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Информация", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Связаться", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Создать", "CreatePerson", "Lab2", new { area = "" }, new { @class = "nav-link" })</li>
+                    }
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    @if(!User.Identity.IsAuthenticated)
+                     {
+                        <li>@Html.ActionLink("Вход", "Login", "Lab2")</li>
+                     }
+                    else
+                    {
+                        <li>@Html.ActionLink(User.Identity.Name, "ListOfPeople", "Lab2", new { area = "" }, new { @class = "nav-link" })</li>
+
+                        <li>@Html.ActionLink("Выход", "LogOut", "Lab2", new { area = "" }, new { @class = "nav-link" })</li>
+                    }
                 </ul>
             </div>
         </div>

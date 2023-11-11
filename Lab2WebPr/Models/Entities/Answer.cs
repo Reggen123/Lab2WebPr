@@ -19,7 +19,7 @@ namespace Lab2WebPr.Models.Entities
         public System.DateTime AnswerTime { get; set; }
         public string AnswerText { get; set; }
     
+        public virtual Person Person { get; set; }
         public virtual Question Question { get; set; }
-        public virtual Person Person2 { get; set; }
     }
 }
